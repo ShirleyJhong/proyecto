@@ -63,6 +63,7 @@
             <input type="submit" id="btnRegistrar" name="btnRegistrar" value="Registrar"/>
             <button type="button" id="btnRegistrar" name="btnRegistrar" >Registrar </button>
         </form>
-
+        <script type="text/javasript" src="../js/bootstrap.js"></script>
+        <script type="text/javasript" src="../js/bootstrap.min.js"></script>
     </body>
 </html>
