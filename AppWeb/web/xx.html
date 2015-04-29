@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+    </head>
+    <body>
+        <div>TODO write content</div>
+
+        private void button1_Click(object sender, EventArgs e)
+{
+    int errValue;
+    int theHandle;
+    string printerNameStr = "Zebra P430i Card Printer USB";
+    byte[] printerName = ASCIIEncoding.ASCII.GetBytes(printerNameStr); 
+    string filePathFront = @"D:\test.PNG";
+    byte[] myFront = ASCIIEncoding.ASCII.GetBytes(filePathFront);
+ 
+    // Open handle to printer
+    if (ZBRGDIInitGraphics(printerName, out theHandle, out errValue) == 0)
+    {
+        MessageBox.Show("Couldn't Connect! - Error Code " + errValue.ToString());
+        return;
+    }
+ 
+    // Draw image to the graphics buffer
+    if (ZBRGDIDrawImageRect(myFront, 0, 0, 1010, 610, out errValue) == 0)
+    {
+        MessageBox.Show("Couldn't Draw Image! - Error Code " + errValue.ToString());
+    }
+ 
+    // Print the graphics buffer
+    if (ZBRGDIPrintGraphics(theHandle, out errValue) == 0)
+    {
+        MessageBox.Show("Couldn't Print Graphics! - Error Code " + errValue.ToString());
+    }
+ 
+    // Close handle
+    ZBRGDICloseGraphics(theHandle, out errValue);        
+ 
+}
+ 
+    </body>
+</html>
